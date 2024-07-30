@@ -86,6 +86,45 @@ tap 'project',
 tap 'publish project'.
 <br >
 ![](https://github.com/ymrdf/html-2-apk/raw/master/pic/15.png)
+```
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Max Token Mining App</title>
+</head>
+<body>
+	<h1>Max Token Mining App</h1>
+	<p>Tap the button below to start mining Max Tokens!</p>
+	<button id="mine-button">Start Mining</button>
+	<p>You will receive 5 Max Tokens after 24 hours.</p>
+	<p>Tap the button below to collect your tokens after 24 hours.</p>
+	<button id="collect-button" disabled>Collect Tokens</button>
+	
+	<script>
+		let miningStarted = false;
+		let collectAvailable = false;
+		
+		document.getElementById('mine-button').addEventListener('click', function() {
+			miningStarted = true;
+			document.getElementById('mine-button').disabled = true;
+			setTimeout(function() {
+				collectAvailable = true;
+				document.getElementById('collect-button').disabled = false;
+			}, 24 * 60 * 60 * 1000); // 24 hours
+		});
+		
+		document.getElementById('collect-button').addEventListener('click', function() {
+			if (collectAvailable) {
+				alert('Congratulations! You have collected 5 Max Tokens!');
+				collectAvailable = false;
+				document.getElementById('collect-button').disabled = true;
+			}
+		});
+	</script>
+</body>
+</html>
+```
+
 
 
 
